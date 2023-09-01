@@ -1,20 +1,18 @@
 <script>
 	import { browser } from '$app/environment';
-
+	import { goto } from '$app/navigation';
+	// @ts-ignore
+	import Home from '$components/Home/components/Home.svelte';
 	// @ts-ignore
 	import { userIsValid } from '$components/store.js';
-	let userStore = false;
 	userIsValid.subscribe((/** @type {any} */ value) => {
+		console.log('userIsValid', value);
 		if (browser && !value) {
-			// to prevent error window is not defined, because it's SSR
-			window.location.href = '/auth/login';
-		} else {
-			userStore = value;
+			// goto('/auth/login');
 		}
 	});
 </script>
 
 <section>
-	<h1>Home</h1>
-	<p>Page content</p>
+	<Home />
 </section>

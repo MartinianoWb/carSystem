@@ -16,5 +16,8 @@
 		</div>
 	{:else}
 		<a href="/">Home</a>
+		<div>
+			<a href="">Logout</a><a href="">Mi perfil</a>
+		</div>
 	{/if}
 </nav>

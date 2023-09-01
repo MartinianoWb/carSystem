@@ -1,6 +1,10 @@
 <script>
 	// @ts-nocheck
 	import { toasts, ToastContainer, FlatToast } from 'svelte-toasts';
+	import { getUsers } from '$components/services/users.js';
+	import { userIsValid } from '$components/store.js';
+	import { goto } from '$app/navigation';
+
 	export let type = 'login';
 	export let title = '';
 	let isValid = false;
@@ -13,9 +17,9 @@
 		avatar: '',
 		password: ''
 	};
-	const showToast = () => {
+	const showToast = (msg) => {
 		const toast = toasts.add({
-			title: 'Error, todos los campos son obligatorios',
+			title: msg ?? 'Error, todos los campos son obligatorios',
 			description: 'Por favor rellene los campos.',
 			duration: 1500, // 0 or negative to avoid auto-remove
 			placement: 'top-right',
@@ -51,13 +55,28 @@
 			console.log(loginObj, registerObj);
 		}
 	}
-	function handleSubmit(e) {
+	async function handleSubmit(e) {
 		e.preventDefault();
 		if (
 			(type === 'register' && hasRequiredFields(registerObj)) ||
 			(type !== 'register' && hasRequiredFields(loginObj))
 		) {
-			console.log(type === 'register' ? registerObj : loginObj);
+			if (type === 'register') {
+			} else {
+				const { name, password } = loginObj;
+				console.log(getUsers);
+				const res = await getUsers(name, password);
+
+				if (res) {
+					userIsValid.set(true);
+					userIsValid.subscribe((value) => {
+						console.log('userIsValid', value);
+					});
+					goto('/');
+				} else {
+					showToast('El usuario no existe o la contraseña es incorrecta');
+				}
+			}
 		} else {
 			showToast();
 		}

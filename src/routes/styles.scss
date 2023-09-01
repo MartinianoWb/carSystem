@@ -1,45 +1,48 @@
 html {
-  font-size: 62.5%;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+	font-size: 62.5%;
+	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
 /* Generales */
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 body {
-  font-family: "Nunito";
-  color: #000000;
-  margin: 0;
+	font-family: 'Nunito';
+	color: #000000;
+	margin: 0;
 }
 
 textarea {
-  resize: none;
+	resize: none;
 }
 
 ul {
-  padding: 0;
+	padding: 0;
 }
 
-.disableBtn{
-  cursor: not-allowed !important;
-  background-color: #555555 !important;
+.disableBtn {
+	cursor: not-allowed !important;
+	background-color: #555555 !important;
 }
 
-.st-toast-details.svelte-1iga0ni .st-toast-title.svelte-1iga0ni{
-  font-size: 1.6rem !important;
+.st-toast-details.svelte-1iga0ni .st-toast-title.svelte-1iga0ni {
+	font-size: 1.6rem !important;
 }
 
 .st-toast-details.svelte-1iga0ni .st-toast-description.svelte-1iga0ni {
-    margin-top: 1rem !important;
-    font-size: 1.2rem !important;
+	margin-top: 1rem !important;
+	font-size: 1.2rem !important;
 }
 
-@import "$components/Formulario/Formulario.scss";
-@import "$components/Navbar/Navbar.scss";
+@import '$components/Formulario/Formulario.scss';
+@import '$components/Navbar/Navbar.scss';
+@import '$components/Home/components/Home.scss';

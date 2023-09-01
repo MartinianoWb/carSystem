@@ -1,0 +1,49 @@
+.Home {
+	display: grid;
+	grid-template-columns: 0.3fr 1fr;
+	margin-top: 2rem;
+	&__container-principal {
+		&-header {
+			display: flex;
+			justify-content: center;
+			position: relative;
+			&-presentacion {
+				display: flex;
+				flex-direction: column;
+				color: white;
+				img {
+					width: 900px;
+					height: 300px;
+					object-fit: cover;
+				}
+				div {
+					position: absolute;
+					top: calc(50% - 100px);
+					left: calc(50% - 100px);
+					text-align: center;
+					h1 {
+						font-size: 3rem;
+						font-weight: 700;
+						filter: drop-shadow(0px 0px 10px rgba(179, 0, 255, 0.905));
+						margin-bottom: 1rem;
+					}
+					h2 {
+						font-size: 1.5rem;
+						font-weight: 400;
+						filter: drop-shadow(0px 0px 10px rgba(179, 0, 255, 0.905));
+					}
+				}
+			}
+		}
+	}
+
+	&__container-secundario {
+		margin: auto;
+		&-side-banner {
+			img {
+				width: 208px;
+				height: 371px;
+			}
+		}
+	}
+}
