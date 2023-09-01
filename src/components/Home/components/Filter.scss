@@ -1,0 +1,30 @@
+.Filter{
+    &__title{
+        font-size: 2rem;
+        font-weight: 700;
+        background-color: rgb(189, 189, 189);
+        margin: auto;
+        margin-top: 2rem;
+        text-align: center;
+    }
+    &__categories{
+            display: flex;
+            flex-direction: column;
+            button{
+                margin-top: 0.5rem;
+                padding: 0.5rem;
+                border: none;
+                border-radius: 5px;
+                background-color: rgb(189, 189, 189);
+                font-size: 1.5rem;
+                font-weight: 700;
+                transition: 1s;
+                cursor: pointer;
+                &:hover{
+                     transition: 1s;
+                    background-color: rgb(179, 0, 255);
+                    color: white;
+                }
+            }
+    }
+}
