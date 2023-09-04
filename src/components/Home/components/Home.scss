@@ -3,6 +3,7 @@
 	grid-template-columns: 0.3fr 1fr;
 	margin-top: 2rem;
 	&__container-principal {
+		margin-left: 35rem;
 		&-header {
 			display: flex;
 			justify-content: center;
@@ -62,7 +63,9 @@
 
 	&__container-secundario {
 		margin: auto;
-		margin-top: 0rem;
+		    position: fixed;
+			
+	margin-top:-2rem;
 		&-side-banner {
 			img {
 				width: 208px;

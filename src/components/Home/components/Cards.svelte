@@ -1,7 +1,19 @@
 <script>
 	// @ts-nocheck
+	import { carrito } from '$components/store.js';
 	export let item = {};
-	console.log(item);
+	function comprar(itemComprado) {
+		carrito.update((/** @type {any} */ value) => {
+			const item = value.find((item) => item.id === itemComprado.id);
+			if (item) {
+				item.cantidad++;
+				return [...value];
+			} else {
+				console.log(value);
+				return [...value, { ...itemComprado, cantidad: 1 }];
+			}
+		});
+	}
 </script>
 
 <div class="Cards">
@@ -10,7 +22,12 @@
 		<div class="Cards__container-info">
 			<h3>{item.nombre}</h3>
 			<span>Precio: ${item.precio}</span>
-			<button id={item.id}>Comprar</button>
+			<button
+				on:click={() => {
+					comprar(item);
+				}}
+				id={item.id}>Comprar</button
+			>
 			<a href="/producto/{item.id}">Ver producto</a>
 		</div>
 	</div>

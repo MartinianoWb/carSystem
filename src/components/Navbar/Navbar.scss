@@ -2,6 +2,7 @@
 	background-color: black;
 	display: flex;
 	gap: 1rem;
+	align-items: center;
 	div {
 		margin-left: auto;
 		a {
@@ -16,5 +17,12 @@
 		color: white;
 		font-size: 2rem;
 		margin-right: 1.7rem;
+	}
+
+	&__logged{
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		justify-content: center;
 	}
 }

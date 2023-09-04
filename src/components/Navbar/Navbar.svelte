@@ -1,6 +1,7 @@
 <script>
-	// @ts-ignore
+	// @ts-nocheck
 	import { userIsValid } from '$components/store.js';
+	import Carrito from '$components/Carrito/Carrito.svelte';
 	let userStore = false;
 
 	userIsValid.subscribe((/** @type {any} */ value) => {
@@ -16,8 +17,10 @@
 		</div>
 	{:else}
 		<a href="/">Home</a>
-		<div>
-			<a href="">Logout</a><a href="">Mi perfil</a>
+		<div class="navbar__logged">
+			<a href="/auth/login">Logout</a>
+			<Carrito />
+			<!-- <a href="">Mi perfil</a> -->
 		</div>
 	{/if}
 </nav>
