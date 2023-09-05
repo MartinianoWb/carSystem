@@ -62,6 +62,16 @@ display: flex;
 	}
 }
 
+.carousel-item{
+	height: 500px !important;
+	background-size: cover
+}
+
+.slide-content{
+	margin-top: calc(120vh - 100vh);
+	margin-left: calc(115vw - 100%);
+}
+
 @import '$components/Formulario/Formulario.scss';
 @import '$components/Navbar/Navbar.scss';
 @import '$components/Home/components/Home.scss';

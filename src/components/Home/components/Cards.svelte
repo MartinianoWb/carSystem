@@ -16,19 +16,58 @@
 	}
 </script>
 
-<div class="Cards">
-	<div class="Cards__container">
-		<div class="Cards__container-image" style="background-image: url({item.img})" />
-		<div class="Cards__container-info">
-			<h3>{item.nombre}</h3>
-			<span>Precio: ${item.precio}</span>
-			<button
-				on:click={() => {
-					comprar(item);
-				}}
-				id={item.id}>Comprar</button
-			>
-			<a href="/producto/{item.id}">Ver producto</a>
+<div class="col-lg-4 col-md-6 pt-7">
+	<div class="product-item">
+		<div class="product-img img-zoom-effect">
+			<a href="shop.html">
+				<img class="img-full" src={item.img} alt="Product Images" />
+			</a>
+		</div>
+		<div class="product-content">
+			<a class="product-name pb-1" href="shop.html">{item.nombre}</a>
+			<div class="price-box">
+				<div class="price-box-holder">
+					<span>Precio:</span>
+					<span class="new-price text-warning">${item.precio}</span>
+				</div>
+			</div>
+			<div class="product-add-action">
+				<ul>
+					<li>
+						<a
+							href="#"
+							on:click={() => {
+								comprar(item);
+							}}
+							id={item.id}
+						>
+							<i class="pe-7s-cart" />
+						</a>
+					</li>
+					<li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+						<a
+							href="#"
+							data-tippy="Quickview"
+							data-tippy-inertia="true"
+							data-tippy-animation="shift-away"
+							data-tippy-delay="50"
+							data-tippy-arrow="true"
+							data-tippy-theme="sharpborder"
+						>
+							<i class="pe-7s-look" />
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
+
+<style>
+	.pe-7s-look {
+		background-color: gainsboro;
+	}
+	.pe-7s-look::before {
+		font-size: 2rem;
+	}
+</style>
