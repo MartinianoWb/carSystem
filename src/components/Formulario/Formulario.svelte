@@ -21,7 +21,7 @@
 		const toast = toasts.add({
 			title: msg ?? 'Error, todos los campos son obligatorios',
 			description: 'Por favor rellene los campos.',
-			duration: 1500, // 0 or negative to avoid auto-remove
+			duration: 0, // 0 or negative to avoid auto-remove
 			placement: 'top-right',
 			type: 'error',
 			theme: 'dark',
@@ -88,7 +88,7 @@
 	}
 </script>
 
-<section class="formulario">
+<!-- <section class="formulario">
 	<form on:submit={handleSubmit} class="formulario__form">
 		<h3>Bienvenido a autoCity</h3>
 		<h3>{title}</h3>
@@ -138,7 +138,40 @@
 			<FlatToast {data} />
 		</ToastContainer>
 	</div>
-</section>
+</section> -->
+<div class="col-lg-6 mx-auto mt-10">
+	<form on:submit={handleSubmit} action="#">
+		<div class="login-form">
+			<h4 class="login-title">Inicio de sesion</h4>
+			<div class="row">
+				<div class="col-lg-12">
+					<label>Nombre de usuario*</label>
+					<input on:input={handleChange} id="nombre" type="text" placeholder="Usuario" />
+				</div>
+				<div class="col-lg-12">
+					<label>Contraseña</label>
+					<input on:input={handleChange} id="password" type="password" placeholder="Contraseña" />
+				</div>
+
+				<div class="col-md-4 pt-1 mt-md-0 w-100">
+					<div class="forgotton-password_info d-flex justify-content-end">
+						<a href="#" class=""> ¿Olvido su contraseña?</a>
+					</div>
+				</div>
+				<div class="col-lg-12 pt-5">
+					<button
+						class={!isValid
+							? 'disableBtn btn btn-custom-size lg-size btn-primary'
+							: 'btn btn-custom-size lg-size btn-primary'}>Iniciar sesion</button
+					>
+				</div>
+			</div>
+		</div>
+	</form>
+	<ToastContainer let:data>
+		<FlatToast {data} />
+	</ToastContainer>
+</div>
 
 <style>
 	.formulario__background {

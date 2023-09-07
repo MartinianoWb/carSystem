@@ -4692,7 +4692,9 @@ fieldset:disabled .btn {
 }
 
 .dropdown-menu.show {
-  display: block;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .dropdown-header {
@@ -16208,7 +16210,6 @@ img {
   height: 35px;
   line-height: 35px;
   font-size: 14px;
-  text-transform: uppercase;
   overflow: hidden;
   border-radius: 0;
   position: relative;
@@ -16241,6 +16242,7 @@ img {
   -webkit-transform: translate(-50%, -50%) scale(1);
       -ms-transform: translate(-50%, -50%) scale(1);
           transform: translate(-50%, -50%) scale(1);
+          /* PARA HACER */
   background-color: #071c35;
 }
 
@@ -17066,18 +17068,19 @@ blockquote .user-name:before {
 }
 
 .header-right > ul > li .minicart-btn .quantity {
-  background-color: #ee3231;
-  border-radius: 100%;
-  text-align: center;
-  font-size: 14px;
-  color: #fff;
-  display: block;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  position: absolute;
-  top: -5px;
-  right: 0;
+background-color: #ee3231;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    display: flex;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    justify-content: center;
+    padding: 0.089rem 0.1rem 0 0.2rem;
 }
 
 .header-right > ul .btn {
@@ -18562,7 +18565,8 @@ blockquote .user-name:before {
 position: absolute;
     bottom: 0;
     left: 0;
-    height: fit-content;
+    padding: .6rem;
+    height: 80px;
     background-color: #00000052;
     width: 100%;
 }
@@ -18570,7 +18574,7 @@ position: absolute;
 .product-content .product-name {
 display: block;
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: 1rem;
     color: white;
     filter: drop-shadow(2px 4px 6px black);
 }
@@ -18591,7 +18595,7 @@ display: block;
  background-color: gainsboro;
 }
 .pe-7s-cart::before{
- font-size:2rem;
+ font-size:1.3rem;
 }
 .product-content .price-box span {
   font-size: 14px;
@@ -21051,7 +21055,6 @@ filter: drop-shadow(2px 4px 6px black);
 .login-title {
   font-size: 20px;
   line-height: 23px;
-  text-transform: capitalize;
   font-weight: 700;
   margin-bottom: 0;
   padding-bottom: 20px;

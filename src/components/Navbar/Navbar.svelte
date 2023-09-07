@@ -1,12 +1,53 @@
 <script>
 	// @ts-nocheck
-	import { userIsValid } from '$components/store.js';
-	import Carrito from '$components/Carrito/Carrito.svelte';
-	let userStore = false;
+	import { carrito, userIsValid } from '$components/store.js';
 
+	let userStore = false;
 	userIsValid.subscribe((/** @type {any} */ value) => {
 		userStore = value;
 	});
+	let isValid = false;
+	function clickCart() {
+		isValid = !isValid;
+	}
+
+	// @ts-nocheck
+
+	let carritoStore = [];
+	let cantidadCarrito = 0;
+	let total = 0;
+	carrito.subscribe((/** @type {any} */ value) => {
+		carritoStore = value;
+		cantidadCarrito = value.cantidad
+			? value.cantidad
+			: value.reduce((acc, elm) => acc + elm.cantidad, 0);
+		total = carritoTotal();
+	});
+
+	function deleteProduct(id) {
+		carrito.update((/** @type {any} */ value) => {
+			const item = value.find((item) => item.id === id);
+			if (item.cantidad >= 2) {
+				item.cantidad--;
+				return [...value];
+			} else {
+				return value.filter((item) => item.id !== id);
+			}
+		});
+	}
+	function vaciarCarrito() {
+		carrito.update((/** @type {any} */ value) => {
+			return [];
+		});
+	}
+
+	function carritoTotal() {
+		let total = 0;
+		carritoStore.forEach((item) => {
+			total += item.precio * item.cantidad;
+		});
+		return total;
+	}
 </script>
 
 <div class="main-wrapper">
@@ -18,7 +59,7 @@
 					<div class="col-6" />
 					<div class="col-6">
 						<div class="header-top-right text-matterhorn">
-							<p class="shipping mb-0">Envio gratis a partir de <span>$10000 pesos</span></p>
+							<p class="shipping mb-0">Envio gratis a partir de <span>$10000</span></p>
 						</div>
 					</div>
 				</div>
@@ -59,16 +100,13 @@
 										<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
 											{#if !userStore}
 												<li>
-													<a class="dropdown-item" href="login-register.html">Iniciar sesion</a>
-													<a class="dropdown-item" href="login-register.html">Registrarse</a>
+													<a class="dropdown-item" href="/auth/login">Iniciar sesion</a>
+													<a class="dropdown-item" href="/auth/register">Registrarse</a>
 												</li>
 											{:else}
-												<a href="/">Home</a>
-												<div class="navbar__logged">
-													<a href="/auth/login">Logout</a>
-													<li><a class="dropdown-item" href="my-account.html">Mi cuenta</a></li>
-													<li><a class="dropdown-item" href="my-account.html">Cerrar sesion</a></li>
-													<Carrito />
+												<div class="navbar__logged d-flex flex-column">
+													<li><a class="dropdown-item" href="/">Inicio</a></li>
+													<li><a class="dropdown-item" href="/auth/login">Cerrar sesion</a></li>
 													<!-- <a href="">Mi perfil</a> -->
 												</div>
 											{/if}
@@ -76,9 +114,9 @@
 									</li>
 
 									<li class="minicart-wrap me-3 me-lg-0">
-										<a href="#miniCart" class="minicart-btn toolbar-btn">
+										<a on:click={clickCart} class="minicart-btn toolbar-btn">
 											<i class="pe-7s-shopbag" />
-											<span class="quantity">5</span>
+											<span class="quantity">{cantidadCarrito}</span>
 										</a>
 									</li>
 									<li class="mobile-menu_wrap d-block d-lg-none">
@@ -93,246 +131,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="mobile-menu_wrapper" id="mobileMenu">
-			<div class="offcanvas-body">
-				<div class="inner-body">
-					<div class="offcanvas-top">
-						<a href="#" class="button-close"><i class="pe-7s-close" /></a>
-					</div>
-					<div class="offcanvas-user-info text-center px-6 pb-5">
-						<div class=" text-silver">
-							<p class="shipping mb-0">
-								Free delivery on order over <span class="text-primary">$200</span>
-							</p>
-						</div>
-					</div>
-					<div class="offcanvas-menu_area">
-						<nav class="offcanvas-navigation">
-							<ul class="mobile-menu">
-								<li class="menu-item-has-children">
-									<a href="#">
-										<span class="mm-text"
-											>Home
-											<i class="pe-7s-angle-down" />
-										</span>
-									</a>
-									<ul class="sub-menu">
-										<li>
-											<a href="index.html">
-												<span class="mm-text">Home One</span>
-											</a>
-										</li>
-										<li>
-											<a href="index-2.html">
-												<span class="mm-text">Home Two</span>
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<a href="about.html">
-										<span class="mm-text">About Us</span>
-									</a>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">
-										<span class="mm-text"
-											>Shop
-											<i class="pe-7s-angle-down" />
-										</span>
-									</a>
-									<ul class="sub-menu">
-										<li class="menu-item-has-children">
-											<a href="#">
-												<span class="mm-text"
-													>Shop Layout
-													<i class="pe-7s-angle-down" />
-												</span>
-											</a>
-											<ul class="sub-menu">
-												<li>
-													<a href="shop.html">
-														<span class="mm-text">Shop Default</span>
-													</a>
-												</li>
-												<li>
-													<a href="shop-grid-fullwidth.html">
-														<span class="mm-text">Shop Grid Fullwidth</span>
-													</a>
-												</li>
-												<li>
-													<a href="shop-right-sidebar.html">
-														<span class="mm-text">Shop Right Sidebar</span>
-													</a>
-												</li>
-												<li>
-													<a href="shop-list-fullwidth.html">
-														<span class="mm-text">Shop List Fullwidth</span>
-													</a>
-												</li>
-												<li>
-													<a href="shop-list-left-sidebar.html">
-														<span class="mm-text">Shop List Left Sidebar</span>
-													</a>
-												</li>
-												<li>
-													<a href="shop-list-right-sidebar.html">
-														<span class="mm-text">Shop List Right Sidebar</span>
-													</a>
-												</li>
-											</ul>
-										</li>
-										<li class="menu-item-has-children">
-											<a href="#">
-												<span class="mm-text"
-													>Product Style
-													<i class="pe-7s-angle-down" />
-												</span>
-											</a>
-											<ul class="sub-menu">
-												<li>
-													<a href="single-product.html">
-														<span class="mm-text">Single Product Default</span>
-													</a>
-												</li>
-												<li>
-													<a href="single-product-group.html">
-														<span class="mm-text">Single Product Group</span>
-													</a>
-												</li>
-												<li>
-													<a href="single-product-variable.html">
-														<span class="mm-text">Single Product Variable</span>
-													</a>
-												</li>
-												<li>
-													<a href="single-product-sale.html">
-														<span class="mm-text">Single Product Sale</span>
-													</a>
-												</li>
-												<li>
-													<a href="single-product-sticky.html">
-														<span class="mm-text">Single Product Sticky</span>
-													</a>
-												</li>
-												<li>
-													<a href="single-product-affiliate.html">
-														<span class="mm-text">Single Product Affiliate</span>
-													</a>
-												</li>
-											</ul>
-										</li>
-										<li class="menu-item-has-children">
-											<a href="#">
-												<span class="mm-text"
-													>Product Related
-													<i class="pe-7s-angle-down" />
-												</span>
-											</a>
-											<ul class="sub-menu">
-												<li>
-													<a href="my-account.html">
-														<span class="mm-text">My Account</span>
-													</a>
-												</li>
-												<li>
-													<a href="login-register.html">
-														<span class="mm-text">Login | Register</span>
-													</a>
-												</li>
-												<li>
-													<a href="cart.html">
-														<span class="mm-text">Shopping Cart</span>
-													</a>
-												</li>
-												<li>
-													<a href="wishlist.html">
-														<span class="mm-text">Wishlist</span>
-													</a>
-												</li>
-												<li>
-													<a href="compare.html">
-														<span class="mm-text">Compare</span>
-													</a>
-												</li>
-												<li>
-													<a href="checkout.html">
-														<span class="mm-text">Checkout</span>
-													</a>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">
-										<span class="mm-text"
-											>Pages
-											<i class="pe-7s-angle-down" />
-										</span>
-									</a>
-									<ul class="sub-menu">
-										<li>
-											<a href="faq.html">
-												<span class="mm-text">Frequently Questions</span>
-											</a>
-										</li>
-										<li>
-											<a href="404.html">
-												<span class="mm-text">Error 404</span>
-											</a>
-										</li>
-									</ul>
-								</li>
-								<li class="menu-item-has-children">
-									<a href="#">
-										<span class="mm-text"
-											>Blog
-											<i class="pe-7s-angle-down" />
-										</span>
-									</a>
-									<ul class="sub-menu">
-										<li class="menu-item-has-children">
-											<a href="#">
-												<span class="mm-text"
-													>Blog Holder
-													<i class="pe-7s-angle-down" />
-												</span>
-											</a>
-											<ul class="sub-menu">
-												<li>
-													<a href="blog.html">
-														<span class="mm-text">Blog Default</span>
-													</a>
-												</li>
-												<li>
-													<a href="blog-listview.html">Blog List View</a>
-												</li>
-												<li>
-													<a href="blog-detail.html">Blog Detail</a>
-												</li>
-											</ul>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<a href="contact.html">
-										<span class="mm-text">Contact</span>
-									</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="offcanvas-minicart_wrapper" id="miniCart">
+		<div
+			class={isValid ? 'offcanvas-minicart_wrapper open' : 'offcanvas-minicart_wrapper'}
+			id="miniCart"
+		>
 			<div class="offcanvas-body">
 				<div class="minicart-content">
 					<div class="minicart-heading">
-						<h4 class="mb-0">Shopping Cart</h4>
-						<a href="#" class="button-close"
+						<h4 class="mb-0">Carrito</h4>
+						<a href="#" class="button-close" on:click={clickCart}
 							><i
 								class="pe-7s-close"
 								data-tippy="Close"
@@ -344,18 +151,57 @@
 							/></a
 						>
 					</div>
-					<ul class="minicart-list" />
+					<ul class="minicart-list">
+						{#each carritoStore as elm}
+							<li class="minicart-product">
+								<a
+									class="product-item_remove"
+									href="#"
+									on:click={() => {
+										deleteProduct(elm.id);
+									}}
+									><i
+										class="pe-7s-trash"
+										data-tippy="Wanna Remove?"
+										data-tippy-inertia="true"
+										data-tippy-animation="shift-away"
+										data-tippy-delay="50"
+										data-tippy-arrow="true"
+										data-tippy-theme="sharpborder"
+									/></a
+								>
+								<a href="#" class="product-item_img">
+									<img class="img-full" src={elm.img} alt="Product Image" />
+								</a>
+								<div class="product-item_content">
+									<a class="product-item_title" href="shop.html">{elm.nombre}</a>
+									<span class="product-item_quantity">{elm.cantidad + ' X ' + elm.precio}</span>
+								</div>
+							</li>
+						{/each}
+					</ul>
 				</div>
-				<div class="minicart-item_total">
-					<span>Subtotal</span>
-					<span class="ammount">$240.00</span>
-				</div>
+				{#if carritoStore.length === 0}
+					<div class="minicart-item_total mx-auto">
+						<span>No hay productos en el carrito</span>
+					</div>
+				{:else}
+					<div class="minicart-item_total">
+						<span>Total</span>
+						<span class="ammount">${total}</span>
+					</div>
+				{/if}
+
 				<div class="group-btn_wrap d-grid gap-2">
-					<a href="cart.html" class="btn btn-dark btn-primary-hover">View Cart</a>
-					<a href="checkout.html" class="btn btn-dark btn-primary-hover">Checkout</a>
+					{#if carritoStore.length !== 0}
+						<a on:click={vaciarCarrito} class="btn btn-danger btn-primary-hover"
+							>Vaciar carrito completo</a
+						>
+						<a href="/checkout" class="btn btn-dark btn-primary-hover">Finalizar compra</a>
+					{/if}
 				</div>
 			</div>
 		</div>
-		<div class="global-overlay" />
+		<div class={isValid ? 'global-overlay overlay-open' : 'global-overlay'} />
 	</header>
 </div>

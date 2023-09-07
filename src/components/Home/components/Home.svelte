@@ -104,7 +104,7 @@
 								</div>
 								<div class="shipping-content">
 									<h2 class="title">Envio gratis</h2>
-									<p class="short-desc mb-0">Envio gratis desde los $10.000 pesos</p>
+									<p class="short-desc mb-0">Envio gratis desde los $10.000</p>
 								</div>
 							</div>
 						</div>
@@ -117,7 +117,7 @@
 									/>
 								</div>
 								<div class="shipping-content">
-									<h2 class="title">Sporte online</h2>
+									<h2 class="title">Soporte online</h2>
 									<p class="short-desc mb-0">
 										Para su seguridad contamos con soporte 24/7 hasta que llegue su producto
 									</p>

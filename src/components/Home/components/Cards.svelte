@@ -68,6 +68,6 @@
 		background-color: gainsboro;
 	}
 	.pe-7s-look::before {
-		font-size: 2rem;
+		font-size: 1.3rem;
 	}
 </style>

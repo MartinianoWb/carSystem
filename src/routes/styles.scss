@@ -1,5 +1,5 @@
 html {
-	font-size: 62.5%;
+	
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 }
@@ -32,15 +32,21 @@ ul {
 .disableBtn {
 	cursor: not-allowed !important;
 	background-color: #555555 !important;
+	border-color: #555555 !important;
+}
+
+.disableBtn::before {
+	background-color: #555555 !important;
+		border-color: #555555 !important;
 }
 
 .st-toast-details.svelte-1iga0ni .st-toast-title.svelte-1iga0ni {
-	font-size: 1.6rem !important;
+	font-size: 1rem !important;
+	color: white !important;
 }
 
 .st-toast-details.svelte-1iga0ni .st-toast-description.svelte-1iga0ni {
-	margin-top: 1rem !important;
-	font-size: 1.2rem !important;
+	font-size: 1rem !important;
 }
 
 .productoId{
@@ -78,4 +84,3 @@ display: flex;
 @import '$components/Home/components/Filter.scss';
 @import '$components/Home/components/Cards.scss';
 @import '$components/Loader/Loader.scss';
-@import '$components/Carrito/Carrito.scss';

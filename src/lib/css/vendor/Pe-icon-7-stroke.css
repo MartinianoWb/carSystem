@@ -259,6 +259,8 @@
 }
 .pe-7s-shopbag:before {
 	content: "\e615";
+	font-size: 22px;
+	color: #212529;
 }
 .pe-7s-share:before {
 	content: "\e616";
