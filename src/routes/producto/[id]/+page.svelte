@@ -5,23 +5,13 @@
 	import { getPartById } from '$components/services/partes.js';
 	import { onMount } from 'svelte';
 	import Loader from '$components/Loader/Loader.svelte';
-	import { carrito } from '$components/store.js';
+	import { carrito, Carrito } from '$components/store.js';
 
 	const { id } = $page.params;
 
 	let data = {};
-	function comprar(itemComprado) {
-		carrito.update((/** @type {any} */ value) => {
-			const item = value.find((item) => item.id === itemComprado.id);
-			if (item) {
-				item.cantidad++;
-				return [...value];
-			} else {
-				console.log(value);
-				return [...value, { ...itemComprado, cantidad: 1 }];
-			}
-		});
-	}
+	const carritoClass = new Carrito();
+
 	onMount(async () => {
 		data = await getPartById(id);
 	});
@@ -38,7 +28,7 @@
 			<h3>Precio: ${data.precio}</h3>
 			<button
 				on:click={() => {
-					comprar(data);
+					carritoClass.comprar(data);
 				}}>Comprar</button
 			>
 		</div>

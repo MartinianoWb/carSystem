@@ -1,7 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { carrito, userIsValid } from '$components/store.js';
-
+	import { carrito, userIsValid, Carrito } from '$components/store.js';
 	let userStore = false;
 	userIsValid.subscribe((/** @type {any} */ value) => {
 		userStore = value;
@@ -10,9 +9,7 @@
 	function clickCart() {
 		isValid = !isValid;
 	}
-
-	// @ts-nocheck
-
+	const carritoClase = new Carrito();
 	let carritoStore = [];
 	let cantidadCarrito = 0;
 	let total = 0;
@@ -21,33 +18,8 @@
 		cantidadCarrito = value.cantidad
 			? value.cantidad
 			: value.reduce((acc, elm) => acc + elm.cantidad, 0);
-		total = carritoTotal();
+		total = carritoClase.carritoTotal();
 	});
-
-	function deleteProduct(id) {
-		carrito.update((/** @type {any} */ value) => {
-			const item = value.find((item) => item.id === id);
-			if (item.cantidad >= 2) {
-				item.cantidad--;
-				return [...value];
-			} else {
-				return value.filter((item) => item.id !== id);
-			}
-		});
-	}
-	function vaciarCarrito() {
-		carrito.update((/** @type {any} */ value) => {
-			return [];
-		});
-	}
-
-	function carritoTotal() {
-		let total = 0;
-		carritoStore.forEach((item) => {
-			total += item.precio * item.cantidad;
-		});
-		return total;
-	}
 
 	function cerrarSesion() {
 		userIsValid.set(false);
@@ -165,7 +137,7 @@
 									class="product-item_remove"
 									href="#"
 									on:click={() => {
-										deleteProduct(elm.id);
+										carritoClase.deleteProduct(elm.id);
 									}}
 									><i
 										class="pe-7s-trash"
@@ -178,7 +150,7 @@
 									/></a
 								>
 								<a href="#" class="product-item_img">
-									<img class="img-full" src={elm.img} alt="Product Image" />
+									<img class="img-full-carrito" src={elm.img} alt="Product Image" />
 								</a>
 								<div class="product-item_content">
 									<a class="product-item_title" href="#">{elm.nombre}</a>
@@ -201,7 +173,7 @@
 
 				<div class="group-btn_wrap d-grid gap-2">
 					{#if carritoStore.length !== 0}
-						<a on:click={vaciarCarrito} class="btn btn-danger btn-primary-hover"
+						<a on:click={carritoClase.vaciarCarrito} class="btn btn-danger btn-primary-hover"
 							>Vaciar carrito completo</a
 						>
 						<a href="/checkout" class="btn btn-dark btn-primary-hover">Finalizar compra</a>

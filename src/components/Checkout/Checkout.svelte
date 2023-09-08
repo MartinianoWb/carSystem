@@ -2,10 +2,11 @@
 	// @ts-nocheck
 
 	import { userIsValid } from '$components/store.js';
-	import { carrito } from '$components/store.js';
+	import { carrito, Carrito } from '$components/store.js';
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 
+	import { goto } from '$app/navigation';
+	const carritoClass = new Carrito();
 	let userStore = false;
 	userIsValid.subscribe((value) => {
 		userStore = value;
@@ -19,20 +20,12 @@
 		cantidadCarrito = value.cantidad
 			? value.cantidad
 			: value.reduce((acc, elm) => acc + elm.cantidad, 0);
-		total = carritoTotal();
+		total = carritoClass.carritoTotal();
 	});
-
-	function carritoTotal() {
-		let total = 0;
-		carritoStore.forEach((item) => {
-			total += item.precio * item.cantidad;
-		});
-		return total;
-	}
 
 	onMount(() => {
 		if (!userStore) {
-			// goto('/auth/login');
+			goto('/auth/login');
 		}
 	});
 </script>
@@ -117,7 +110,7 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th id="cart-product-name">Producto</th>
+									<th id="cart-product-name">Productos</th>
 									<th id="cart-product-total">Total</th>
 								</tr>
 							</thead>

@@ -5,8 +5,9 @@
 				<div class="col-lg-3">
 					<div class="widget-item">
 						<p class="short-desc mb-2">
-							Lorem ipsum dolor sit amet, consectet adipisicing elit, sed do eiusmod tempor incidi
-							ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+							Con años de experiencia en la industria y un equipo comprometido con la excelencia,
+							nos enorgullece ser su socio de confianza en la búsqueda de piezas automotrices de
+							primera calidad.
 						</p>
 						<div class="social-link pt-2">
 							<ul>
@@ -68,31 +69,27 @@
 				</div>
 				<div class="col-lg-2 col-md-4 col-sm-4 pt-8 pt-lg-0">
 					<div class="widget-item">
-						<h3 class="widget-title mb-5">Atajos</h3>
+						<h3 class="widget-title mb-5">Soporte</h3>
 						<ul class="widget-list-item">
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Support</a>
+								<a href="#">Línea de ayuda</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Helpline</a>
+								<a href="#">Cursos</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Courses</a>
+								<a href="#">Rastreo de pedido</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">About</a>
+								<a href="#">Eventos</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Event</a>
-							</li>
-							<li>
-								<i class="fa fa-chevron-right" />
-								<a href="#">Subject</a>
+								<a href="#">Asuntos</a>
 							</li>
 						</ul>
 					</div>
@@ -103,7 +100,7 @@
 						<ul class="widget-list-item">
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">About</a>
+								<a href="#">Novedades</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
@@ -111,19 +108,19 @@
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Speakers</a>
+								<a href="#">Referentes</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Contact</a>
+								<a href="#">Contacto</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Tricket</a>
+								<a href="#">Proyectos</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Seminar</a>
+								<a href="#">Seminarios</a>
 							</li>
 						</ul>
 					</div>
@@ -134,27 +131,27 @@
 						<ul class="widget-list-item">
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">How to Shop</a>
+								<a href="#">Cómo comprar </a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Contact us</a>
+								<a href="#">Contáctenos</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">My Wishlist</a>
+								<a href="#">Mi lista de deseos</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Checkout</a>
+								<a href="#">Finalizar compra</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Log in</a>
+								<a href="#">Iniciar sesión</a>
 							</li>
 							<li>
 								<i class="fa fa-chevron-right" />
-								<a href="#">Help</a>
+								<a href="#">Ayuda</a>
 							</li>
 						</ul>
 					</div>

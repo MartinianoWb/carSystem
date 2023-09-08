@@ -1,19 +1,22 @@
 <script>
 	// @ts-nocheck
-	import { carrito } from '$components/store.js';
+	import { Carrito } from '$components/store.js';
+	import { toasts, ToastContainer, FlatToast } from 'svelte-toasts';
 	export let item = {};
-	function comprar(itemComprado) {
-		carrito.update((/** @type {any} */ value) => {
-			const item = value.find((item) => item.id === itemComprado.id);
-			if (item) {
-				item.cantidad++;
-				return [...value];
-			} else {
-				console.log(value);
-				return [...value, { ...itemComprado, cantidad: 1 }];
-			}
+	const carritoClass = new Carrito();
+	const showToast = (msg) => {
+		const toast = toasts.add({
+			title: msg ?? 'Se ha agregado un producto al carrito',
+			description: '',
+			duration: 3000, // 0 or negative to avoid auto-remove
+			placement: 'top-right',
+			type: 'success',
+			theme: 'dark',
+			onClick: () => {},
+			onRemove: () => {}
+			// component: BootstrapToast, // allows to override toast component/template per toast
 		});
-	}
+	};
 </script>
 
 <div class="col-lg-4 col-md-6 pt-7">
@@ -37,7 +40,8 @@
 						<a
 							href="#"
 							on:click={() => {
-								comprar(item);
+								carritoClass.comprar(item);
+								showToast();
 							}}
 							id={item.id}
 						>
@@ -62,6 +66,10 @@
 		</div>
 	</div>
 </div>
+
+<ToastContainer let:data>
+	<FlatToast {data} />
+</ToastContainer>
 
 <style>
 	.pe-7s-look {

@@ -15521,7 +15521,14 @@ ul {
 img {
   max-width: 100%;
 }
-
+.img-full-carrito{
+    width: 100%;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+}
 .img-full {
   width: 100%;
   height: 240px;
