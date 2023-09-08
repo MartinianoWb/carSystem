@@ -19,12 +19,12 @@
 <div class="col-lg-4 col-md-6 pt-7">
 	<div class="product-item">
 		<div class="product-img img-zoom-effect">
-			<a href="shop.html">
+			<a href="#">
 				<img class="img-full" src={item.img} alt="Product Images" />
 			</a>
 		</div>
 		<div class="product-content">
-			<a class="product-name pb-1" href="shop.html">{item.nombre}</a>
+			<a class="product-name pb-1" href="#">{item.nombre}</a>
 			<div class="price-box">
 				<div class="price-box-holder">
 					<span>Precio:</span>

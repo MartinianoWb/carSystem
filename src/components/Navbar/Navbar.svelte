@@ -48,6 +48,10 @@
 		});
 		return total;
 	}
+
+	function cerrarSesion() {
+		userIsValid.set(false);
+	}
 </script>
 
 <div class="main-wrapper">
@@ -59,7 +63,7 @@
 					<div class="col-6" />
 					<div class="col-6">
 						<div class="header-top-right text-matterhorn">
-							<p class="shipping mb-0">Envio gratis a partir de <span>$10000</span></p>
+							<p class="shipping mb-0">Envío gratis a partir de <span>$10000</span></p>
 						</div>
 					</div>
 				</div>
@@ -100,14 +104,17 @@
 										<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
 											{#if !userStore}
 												<li>
-													<a class="dropdown-item" href="/auth/login">Iniciar sesion</a>
+													<a class="dropdown-item" href="/auth/login">Iniciar sesión</a>
 													<a class="dropdown-item" href="/auth/register">Registrarse</a>
 												</li>
 											{:else}
 												<div class="navbar__logged d-flex flex-column">
 													<li><a class="dropdown-item" href="/">Inicio</a></li>
-													<li><a class="dropdown-item" href="/auth/login">Cerrar sesion</a></li>
-													<!-- <a href="">Mi perfil</a> -->
+													<li>
+														<a on:click={cerrarSesion} class="dropdown-item" href="/auth/login"
+															>Cerrar sesión</a
+														>
+													</li>
 												</div>
 											{/if}
 										</ul>
@@ -174,7 +181,7 @@
 									<img class="img-full" src={elm.img} alt="Product Image" />
 								</a>
 								<div class="product-item_content">
-									<a class="product-item_title" href="shop.html">{elm.nombre}</a>
+									<a class="product-item_title" href="#">{elm.nombre}</a>
 									<span class="product-item_quantity">{elm.cantidad + ' X ' + elm.precio}</span>
 								</div>
 							</li>

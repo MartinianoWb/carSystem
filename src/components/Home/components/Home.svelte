@@ -103,8 +103,8 @@
 									/>
 								</div>
 								<div class="shipping-content">
-									<h2 class="title">Envio gratis</h2>
-									<p class="short-desc mb-0">Envio gratis desde los $10.000</p>
+									<h2 class="title">Envío gratis</h2>
+									<p class="short-desc mb-0">Envío gratis desde los $10.000</p>
 								</div>
 							</div>
 						</div>

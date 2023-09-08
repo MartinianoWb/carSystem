@@ -32,7 +32,7 @@
 
 	onMount(() => {
 		if (!userStore) {
-			goto('/auth/login');
+			// goto('/auth/login');
 		}
 	});
 </script>
@@ -47,7 +47,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="country-select clearfix">
-									<label>Pais <span class="required">*</span></label>
+									<label>País <span class="required">*</span></label>
 									<select class="myniceselect nice-select wide">
 										<option data-display="Bangladesh">Argentina</option>
 									</select>
@@ -67,8 +67,8 @@
 							</div>
 							<div class="col-md-12">
 								<div class="checkout-form-list">
-									<label>Direccion <span class="required">*</span></label>
-									<input placeholder="Direccion de calle" type="text" />
+									<label>Dirección <span class="required">*</span></label>
+									<input placeholder="Dirección de calle" type="text" />
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -90,7 +90,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="checkout-form-list">
-									<label>Codigo postal <span class="required">*</span></label>
+									<label>Código postal <span class="required">*</span></label>
 									<input placeholder="" type="text" />
 								</div>
 							</div>
@@ -102,7 +102,7 @@
 							</div>
 							<div class="col-md-6">
 								<div class="checkout-form-list">
-									<label>Numero de celular <span class="required">*</span></label>
+									<label>Número de celular <span class="required">*</span></label>
 									<input type="text" />
 								</div>
 							</div>
@@ -117,8 +117,8 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th class="cart-product-name">Producto</th>
-									<th class="cart-product-total">Total</th>
+									<th id="cart-product-name">Producto</th>
+									<th id="cart-product-total">Total</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -127,7 +127,7 @@
 										<td class="cart-product-name text-left">
 											{elm.nombre} <strong class="product-quantity"> × {elm.cantidad}</strong>
 										</td>
-										<td class="cart-product-total text-right"
+										<td class="cart-product-total text-end"
 											><span class="amount">${elm.cantidad * elm.precio}</span></td
 										>
 									</tr>
@@ -136,11 +136,11 @@
 							<tfoot>
 								<tr class="cart-subtotal text-left">
 									<th>SubTotal</th>
-									<td class="text-right"><span class="amount">${total}</span></td>
+									<td class="text-end"><span class="amount">${total}</span></td>
 								</tr>
-								<tr class="order-total text-center">
-									<th>Total</th>
-									<td class="text-right"><strong><span class="amount">${total}</span></strong></td>
+								<tr class="order-total">
+									<th class="text-left">Total</th>
+									<td class="text-end"><strong><span class="amount">${total}</span></strong></td>
 								</tr>
 							</tfoot>
 						</table>
@@ -182,7 +182,7 @@
 												data-bs-target="#collapseTwo"
 												aria-expanded="false"
 											>
-												Pago en cheque
+												Pago con cheque
 											</a>
 										</h5>
 									</div>
@@ -222,7 +222,7 @@
 								</div>
 							</div>
 							<div class="order-button-payment">
-								<input value="Place order" type="submit" />
+								<input value="Realizar pedido" type="submit" />
 							</div>
 						</div>
 					</div>
